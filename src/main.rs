@@ -24,7 +24,7 @@ struct Arguments {
   window_size: u32,
 }
 
-static EXCLUDE: &'static [&'static str] = &["", "SHA1SUM"];
+static EXCLUDE: &'static [&'static str] = &[".git", "SHA1SUM", "README.md"];
 
 impl Arguments {
   fn run(self) -> Result {
