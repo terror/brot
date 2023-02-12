@@ -1,5 +1,6 @@
-Compressing the Canterbury Corpus files using [brotli](https://www.rfc-editor.org/rfc/rfc7932)
-compression in Rust:
+Compressing the [canterbury corpus](https://corpus.canterbury.ac.nz/) files
+with [brotli](https://www.rfc-editor.org/rfc/rfc7932) compression in Rust using
+the [rust-brotli](https://github.com/dropbox/rust-brotli) library.
 
 ```
 $ cargo run -- --directory canterbury-corpus/
