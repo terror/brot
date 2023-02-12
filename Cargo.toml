@@ -1,0 +1,10 @@
+[package]
+name = "brot"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.69"
+brotli = "3.3.4"
+clap = { version = "4.1.4", features = ["derive"] }
+walkdir = "2.3.2"

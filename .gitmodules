@@ -1,0 +1,3 @@
+[submodule "canterbury-corpus"]
+	path = canterbury-corpus
+	url = https://github.com/pfalcon/canterbury-corpus
