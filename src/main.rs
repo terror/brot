@@ -2,6 +2,7 @@ use {
   brotli::{enc::writer::CompressorWriter, DecompressorWriter},
   clap::Parser,
   std::{
+    ffi::OsStr,
     fs::File,
     io::{self, prelude::*, Write},
     path::PathBuf,
@@ -23,7 +24,7 @@ struct Arguments {
   window_size: u32,
 }
 
-static EXCLUDE: &'static [&'static str] = &["SHA1SUM"];
+static EXCLUDE: &'static [&'static str] = &["", "SHA1SUM"];
 
 impl Arguments {
   fn run(self) -> Result {
@@ -31,7 +32,14 @@ impl Arguments {
       .into_iter()
       .filter_map(|e| e.ok())
       .filter(|e| {
-        e.path().is_file() && !EXCLUDE.contains(&e.path().to_str().unwrap())
+        e.path().is_file()
+          && !EXCLUDE.contains(
+            &e.path()
+              .file_name()
+              .unwrap_or(OsStr::new(""))
+              .to_str()
+              .unwrap(),
+          )
       })
       .try_for_each(|entry| {
         let mut file = File::open(entry.path())?;
